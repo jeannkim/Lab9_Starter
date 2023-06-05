@@ -102,6 +102,114 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    
+    // Step 2: Add buttons for console testing
+
+    // console.log
+    let btnLog = errorBtns[0];
+    btnLog.addEventListener('click', () => {
+      console.log('Console Log Pressed');
+    });
+
+    // console.error
+    let btnError = errorBtns[1];
+    btnError.addEventListener('click', () => {
+      console.error('Console Error Pressed');
+    });
+
+    // console.count
+    let btnCount = errorBtns[2];
+    btnCount.addEventListener('click', () => {
+      console.count('Console Count Pressed');
+    });
+
+    // console.warn
+    let btnWarn = errorBtns[3];
+    btnWarn.addEventListener('click', () => {
+      console.warn('Console Warn Pressed');
+    });
+
+    // console.assert
+    let btnAssert = errorBtns[4];
+    btnAssert.addEventListener('click', () => {
+      let number = 1;
+      let errorMsg = 'Number is not even';
+      console.assert(number % 2 == 0, {number, errorMsg});
+    });
+
+    // console.clear
+    let btnClear = errorBtns[5];
+    btnClear.addEventListener('click', () => {
+      console.clear();
+    })
+
+    // console.dir
+    let btnDir = errorBtns[6];
+    btnDir.addEventListener('click', () => {
+      console.dir(btnDir);
+    })
+
+    // console.dirxml
+    let btnDirXml = errorBtns[7];
+    btnDirXml.addEventListener('click', () => {
+      console.dirxml(btnDirXml);
+    })
+
+    // console.group (start)
+    let btnGroup = errorBtns[8];
+    btnGroup.addEventListener('click', () => {
+      console.log("Outer level")
+      console.group();
+      console.log("Inner level")
+    })
+
+    // console.groupEnd
+    let btnGroupEnd = errorBtns[9];
+    btnGroupEnd.addEventListener('click', () => {
+      console.groupEnd();
+      console.log("Back to outer level")
+    })
+
+    // console.table
+    let btnTable  = errorBtns[10];
+    btnTable.addEventListener('click', () => {
+      const tunes = [
+        {name:'Rank', artist: 'Mr. Oizo'}, 
+        {name: 'Bicstan', artist: 'Hudson Mohawke'}
+      ];
+      console.table(tunes);
+    })
+
+    // console.time (start timer)
+    let btnTime  = errorBtns[11];
+    btnTime.addEventListener('click', () => {
+      console.time();
+    })
+
+    // console.timeEnd (end timer)
+    let btnTimeEnd  = errorBtns[12];
+    btnTimeEnd.addEventListener('click', () => {
+      console.timeEnd();
+    })
+
+    // console.trace
+    let btnTrace  = errorBtns[13];
+    btnTrace.addEventListener('click', () => {
+      function outerFun() {
+        function innerFun() {
+          console.trace();
+        }
+        innerFun();
+      }
+      outerFun();
+    })
+
+    // global error
+    let btnGlobal  = errorBtns[14];
+    btnGlobal.addEventListener('click', () => {
+      throw new Error("Whoops!");
+    })
+
   </script>
 </body>
 
