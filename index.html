@@ -95,7 +95,31 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      //output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+
+      // *STEP 4: custom Error*
+      class InvalidCalcError extends Error {
+        constructor(message) {
+          super(message);
+          this.name = 'InvalidCalcResultError';
+        }
+      }
+
+      // *STEP 3: using try/catch/finally/throw*
+      try {
+        // try calculating result
+        let result = eval(`${firstNum} ${operator} ${secondNum}`);
+        // display result
+        output.innerHTML = result;
+      } catch (error) {
+        // *STEP 4: handle error*
+        console.log('Error found :(');
+        throw new InvalidCalcError('Invalid result; not a number');
+      } finally {
+        // clear input fields
+        document.querySelector('#first-num').value = '';
+        document.querySelector('#second-num').value = '';
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -103,7 +127,7 @@
     // Start your code here
     // You may move this JS to another file if you wish
     
-    // Step 2: Add buttons for console testing
+    // *STEP 2: Console testing with buttons*
 
     // console.log
     let btnLog = errorBtns[0];
@@ -209,6 +233,10 @@
     btnGlobal.addEventListener('click', () => {
       throw new Error("Whoops!");
     })
+
+
+    // *STEP 3 and STEP 4: above in form code*
+    // 
 
   </script>
 </body>
