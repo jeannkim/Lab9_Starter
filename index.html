@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
-  <!-- STEP 5: TrackJS -->
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-  <script>
-    window.TrackJS && TrackJS.install({ 
-      token: "12d4666951044819bbff4cc8c37f9106"
-      // for more configuration options, see https://docs.trackjs.com
-    });
-  </script>
-  <!-- end TrackJS-->
   <style>
     button {
       margin: 3px;
@@ -94,6 +86,15 @@
       <button>Trigger a Global Error</button>
     </section>
   </main>
+  <!-- STEP 5: TrackJS -->
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "12d4666951044819bbff4cc8c37f9106"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+  <!-- end TrackJS-->
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -120,6 +121,7 @@
         output.innerHTML = result;
       } catch (error) {
         // *STEP 4: handle error*
+        TrackJS.track(error);
         throw new InvalidCalcError('Invalid result; not a number');
       } finally {
         // clear input fields
