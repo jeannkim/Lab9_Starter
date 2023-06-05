@@ -113,7 +113,6 @@
         output.innerHTML = result;
       } catch (error) {
         // *STEP 4: handle error*
-        console.log('Error found :(');
         throw new InvalidCalcError('Invalid result; not a number');
       } finally {
         // clear input fields
@@ -236,7 +235,9 @@
 
 
     // *STEP 3 and STEP 4: above in form code*
-    // 
+    window.onerror = function(){
+      console.log('An error happened :( sad');
+    };
 
   </script>
 </body>
